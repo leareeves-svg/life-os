@@ -1,114 +1,173 @@
 <!DOCTYPE html>
-<html>
-<head><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <title>Life OS</title>
-  <style>
-    body {
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Life OS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
   font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0b1220, #1e293b);
+  color: white;
 }
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+
+header {
+  text-align: center;
+  padding: 50px 20px;
 }
 
-    header {
-      padding: 40px;
-      text-align: center;
-      background: #111827;
-    }
+h1 { font-size: 42px; margin: 0; }
 
-    h1 {
-      margin: 0;
-      font-size: 40px;
-    }
+.subtitle { opacity: 0.7; margin-top: 8px; }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  padding: 20px;
+}
 
-    .card {
-      background: #1f2937;
-      padding: 20px;
-      border-radius: 12px;
-    }
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 18px;
+  backdrop-filter: blur(12px);
+  transition: 0.3s;
+}
 
-    h2 {
-      color: #60a5fa;
-    }
+.card:hover {
+  transform: translateY(-5px);
+}
 
-    ul {
-      padding-left: 20px;
-    }
-  </style>
+h2 {
+  font-size: 16px;
+  color: #93c5fd;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+button {
+  background: rgba(96,165,250,0.2);
+  border: 1px solid #60a5fa;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+button.done {
+  background: rgba(34,197,94,0.3);
+  border-color: #22c55e;
+}
+
+.progress {
+  height: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  transition: width 0.3s;
+}
+</style>
 </head>
 
 <body>
 
 <header>
   <h1>Life OS</h1>
-  <p>CRNA Path • Business • Creativity • Discipline</p>
+  <div class="subtitle">CRNA Path • Business • Creativity • Growth</div>
 </header>
 
 <div class="container">
 
-  <div class="card">
-    <h2>🎯 90-Day Goals</h2>
-    <ul>
-      <li>Launch tutoring business</li>
-      <li>Create LinkedIn + resume</li>
-      <li>Write 20,000 words OR release 1 song</li>
-      <li>Start research outreach</li>
-      <li>Build social media page</li>
-    </ul>
-  </div>
+<!-- 90 DAY -->
+<div class="card">
+<h2>🎯 90-Day Goals</h2>
 
-  <div class="card">
-    <h2>📚 Academics</h2>
-    <ul>
-      <li>GPA tracking</li>
-      <li>Dean’s List goal</li>
-      <li>Study consistency</li>
-    </ul>
-  </div>
+<div class="item">Launch business <button onclick="toggle(this,'g1')">+</button></div>
+<div class="item">Resume + LinkedIn <button onclick="toggle(this,'g2')">+</button></div>
+<div class="item">Creative project <button onclick="toggle(this,'g3')">+</button></div>
+<div class="item">Research outreach <button onclick="toggle(this,'g4')">+</button></div>
 
-  <div class="card">
-    <h2>💼 Career</h2>
-    <ul>
-      <li>Tutor</li>
-      <li>Front Desk</li>
-      <li>Social Media Role</li>
-    </ul>
-  </div>
+<div class="progress"><div class="bar" id="p1"></div></div>
+</div>
 
-  <div class="card">
-    <h2>💰 Business</h2>
-    <ul>
-      <li>First client goal</li>
-      <li>Revenue tracking</li>
-      <li>Marketing attempts</li>
-    </ul>
-  </div>
+<!-- BUSINESS -->
+<div class="card">
+<h2>💰 Business</h2>
 
-  <div class="card">
-    <h2>🎨 Creative</h2>
-    <ul>
-      <li>Novel writing OR music production</li>
-      <li>Daily/weekly progress</li>
-      <li>Release goal</li>
-    </ul>
-  </div>
+<div class="item">First client <button onclick="toggle(this,'b1')">+</button></div>
+<div class="item">Marketing attempt <button onclick="toggle(this,'b2')">+</button></div>
+<div class="item">Income tracked <button onclick="toggle(this,'b3')">+</button></div>
 
-  <div class="card">
-    <h2>📱 Social Media</h2>
-    <ul>
-      <li>Posting consistency</li>
-      <li>Follower growth</li>
-      <li>Content ideas</li>
-    </ul>
-  </div>
+<div class="progress"><div class="bar" id="p2"></div></div>
+</div>
+
+<!-- CREATIVE -->
+<div class="card">
+<h2>🎨 Creative</h2>
+
+<div class="item">Start project <button onclick="toggle(this,'c1')">+</button></div>
+<div class="item">Consistency week 1 <button onclick="toggle(this,'c2')">+</button></div>
+<div class="item">First milestone <button onclick="toggle(this,'c3')">+</button></div>
+
+<div class="progress"><div class="bar" id="p3"></div></div>
+</div>
 
 </div>
+
+<script>
+
+function toggle(btn, key){
+  let state = localStorage.getItem(key);
+
+  if(state === "1"){
+    localStorage.setItem(key,"0");
+    btn.classList.remove("done");
+    btn.innerText = "+";
+  } else {
+    localStorage.setItem(key,"1");
+    btn.classList.add("done");
+    btn.innerText = "✓";
+  }
+
+  updateBars();
+}
+
+function getProgress(keys){
+  let done = 0;
+  keys.forEach(k => {
+    if(localStorage.getItem(k) === "1") done++;
+  });
+  return (done / keys.length) * 100;
+}
+
+function updateBars(){
+  document.getElementById("p1").style.width = getProgress(['g1','g2','g3','g4']) + "%";
+  document.getElementById("p2").style.width = getProgress(['b1','b2','b3']) + "%";
+  document.getElementById("p3").style.width = getProgress(['c1','c2','c3']) + "%";
+}
+
+updateBars();
+
+</script>
 
 </body>
 </html>
